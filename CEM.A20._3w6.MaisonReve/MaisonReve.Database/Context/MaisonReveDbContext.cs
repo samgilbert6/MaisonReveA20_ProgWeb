@@ -6,8 +6,13 @@ using MaisonReve.Database.Models;
 
 namespace MaisonReve.Database.Context
 {
-    class MaisonReveDbContext:DbContext
+    class MaisonReveDbContext : DbContext
     {
         public DbSet<Building> Buildings { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
     }
 }
